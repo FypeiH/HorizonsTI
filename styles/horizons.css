@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --primary-color: #d1554a;
+  --secondary-color: #F1F1F1;
+  --details-color: #34495E;
+  --secondary-details-color: #2C3E50;
+  --terciary-details-color: #EAEAEA;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--secondary-color);
+  color: var(--details-color);
+  margin: 0; 
+  padding: 0;
+}
+
+/* Shared */
+
+.bg-primary {
+  background-color: var(--primary-color)!important;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-color);
+  opacity: 0.8;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active {
+  background-color: var(--primary-color);
+  border: none;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active:focus {
+  box-shadow: none;
+}
+
+.text-details {
+  color: var(--details-color);
+}
+
+.text-secondary-details {
+  color: var(--secondary-details-color);
+}
+
+
+/* Navbar */
+.nav-navbar-brand {
+  font-family: 'Bebas Neue', cursive;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+
+/* Home */
+.home-hero {
+  background: url('../img/homehero.jpg') center/cover no-repeat;
+  background-attachment: fixed;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.home-hero::before {
+  content: ''; 
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); 
+  z-index: 1;
+}
+
+.home-hero > * {
+  position: relative;
+  z-index: 2;
+}
+
+
