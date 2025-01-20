@@ -24,6 +24,11 @@ body {
   padding: 0;
 }
 
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
 /* Shared */
 
 .bg-primary {
@@ -120,3 +125,41 @@ body {
   z-index: 2;
 }
 
+/* Destinos */
+.destinos-hero {
+  background-attachment: fixed;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.destinos-hero.paris {
+  background: url('../img/parishero.jpg') center/cover no-repeat;
+}
+
+.destinos-hero.tokyo {
+  background: url('../img/tokyohero.jpg') center/cover no-repeat;
+}
+
+.destinos-hero.machu {
+  background: url('../img/machuhero.jpg') center/cover no-repeat;
+}
+
+.destinos-hero::before {
+  content: ''; 
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); 
+  z-index: 1;
+}
+
+.destinos-hero > * {
+  position: relative;
+  z-index: 2;
+}
