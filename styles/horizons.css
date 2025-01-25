@@ -163,3 +163,61 @@ a {
   position: relative;
   z-index: 2;
 }
+
+/* Articles */
+.article-hero {
+  background-attachment: fixed;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.article-hero::before {
+  content: ''; 
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); 
+  z-index: 1;
+}
+
+.article-hero > * {
+  position: relative;
+  z-index: 2;
+}
+
+.article-hero.perfect-trip {
+  background: url('../img/perfecttrip.jpg') center/cover no-repeat;
+}
+
+.article-hero.europe-trip {
+  background: url('../img/europetrip.jpg') center/cover no-repeat;
+}
+
+.article-hero.asia-trip {
+  background: url('../img/asiaadventure.jpg') center/cover no-repeat;
+}
+
+
+.section-img {
+  background-size: cover;
+  background-position: center;
+  min-height: 300px;
+}
+.text-overlay {
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 20px;
+  border-radius: 5px;
+}
+.step-section {
+  padding: 50px 0;
+}
+.step-section:nth-child(even) {
+  background: #f9f9f9;
+}

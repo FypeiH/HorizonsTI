@@ -1,105 +1,103 @@
 function scrollToTop() {
     window.scrollTo({
         top: 0,
-        behavior: 'smooth' // Smooth scrolling effect
+        behavior: 'smooth'
     });
 }
 
-// Load header.html
-fetch('shared/header.html')
-    .then(response => response.text())
-    .then(html => {
-        const header = document.getElementById('header');
-        if (header) {
-            header.innerHTML = html;
-        }
-    })
-    .catch(error => {
-        console.warn('Error loading header.html:', error);
-    });
+function fetchAndInsert(url, targetId) {
+    fetch(url)
+        .then(response => response.text())
+        .then(html => {
+            const target = document.getElementById(targetId);
+            if (target) {
+                target.innerHTML = html;
+            }
+        })
+        .catch(error => console.warn(`Error loading ${url}:`, error));
+}
 
-// Load footer.html
-fetch('shared/footer.html')
-    .then(response => response.text())
-    .then(html => {
-        const footer = document.getElementById('footer');
-        if (footer) {
-            footer.innerHTML = html;
-        }
-    })
-    .catch(error => {
-        console.warn('Error loading footer.html:', error);
-    });
+function loadContentBasedOnHash() {
+    const hash = window.location.hash;
+    const content = document.getElementById('content');
 
-// Load default home.html into content
-fetch('content/home.html')
-    .then(response => response.text())
-    .then(html => {
-        const content = document.getElementById('content');
-        if (content) {
-            content.innerHTML = html;
-        }
-    })
-    .catch(error => {
-        console.warn('Error loading home.html:', error);
-    });
+    const navItems = {
+        navHome: document.getElementById('navHome'),
+        navDestinos: document.getElementById('navDestinos'),
+        navBlog: document.getElementById('navBlog'),
+        navContacto: document.getElementById('navContacto')
+    };
 
-// Handle dynamic loading of destinos.html
+    const setActiveNav = (activeItemId) => {
+        Object.entries(navItems).forEach(([key, element]) => {
+            if (element) {
+                element.classList.toggle('active', key === activeItemId);
+            }
+        });
+    };
+
+    const contentMapping = {
+        '#paris': { url: 'content/parisDetails.html', nav: 'navDestinos' },
+        '#tokyo': { url: 'content/tokyoDetails.html', nav: 'navDestinos' },
+        '#machuPicchu': { url: 'content/machuPicchuDetails.html', nav: 'navDestinos' },
+        '#perfectTrip': { url: 'content/perfectTripDetails.html', nav: 'navBlog' },
+        '#europeTrip': { url: 'content/europeTripDetails.html', nav: 'navBlog' },
+        '#asiaTrip': { url: 'content/asiaTripDetails.html', nav: 'navBlog' },
+        'default': { url: 'content/home.html', nav: 'navHome' }
+    };
+
+    const { url, nav } = contentMapping[hash] || contentMapping['default'];
+
+    fetch(url)
+        .then(response => response.text())
+        .then(html => {
+            if (content) {
+                content.innerHTML = html;
+                scrollToTop();
+            }
+        })
+        .then(() => setActiveNav(nav))
+        .catch(error => console.warn(`Error loading ${url}:`, error));
+}
+
+// Load shared header and footer
+fetchAndInsert('shared/header.html', 'header');
+fetchAndInsert('shared/footer.html', 'footer');
+
 document.addEventListener('click', function (event) {
-    if (event.target && event.target.id === 'home') {
-        fetch('content/home.html')
-            .then(response => response.text())
-            .then(html => {
-                const content = document.getElementById('content');
-                if (content) {
-                    content.innerHTML = html;
-                    scrollToTop();
+    const actions = {
+        logoHome: { hash: '', scrollTo: null },
+        navHome: { hash: '', scrollTo: null },
+        navDestinos: { hash: '#destinos', scrollTo: 'destinos' },
+        navBlog: { hash: '#blog', scrollTo: 'blog' },
+        btnParis: { hash: '#paris', scrollTo: null },
+        btnTokyo: { hash: '#tokyo', scrollTo: null },
+        btnMachuPicchu: { hash: '#machuPicchu', scrollTo: null },
+        btnPerfectTrip: { hash: '#perfectTrip', scrollTo: null },
+        btnEuropeTrip: { hash: '#europeTrip', scrollTo: null },
+        btnAsiaTrip: { hash: '#asiaTrip', scrollTo: null }
+    };
+
+    const action = actions[event.target.id];
+    if (action) {
+        if (action.hash !== undefined) {
+            window.location.hash = action.hash;
+            loadContentBasedOnHash();
+        }
+
+        if (action.scrollTo) {
+            setTimeout(() => {
+                const section = document.getElementById(action.scrollTo);
+                if (section) {
+                    section.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
-            })
-            .catch(error => {
-                console.warn('Error loading home.html:', error);
-            });
-    }
-    if (event.target && event.target.id === 'btnParis') {
-        fetch('content/parisDetails.html')
-            .then(response => response.text())
-            .then(html => {
-                const content = document.getElementById('content');
-                if (content) {
-                    content.innerHTML = html;
-                    scrollToTop();
-                }
-            })
-            .catch(error => {
-                console.warn('Error loading parisDetails.html:', error);
-            });
-    }
-    if (event.target && event.target.id === 'btnTokyo') {
-        fetch('content/tokyoDetails.html')
-            .then(response => response.text())
-            .then(html => {
-                const content = document.getElementById('content');
-                if (content) {
-                    content.innerHTML = html;
-                    scrollToTop();
-                }
-            })
-            .catch(error => {
-                console.warn('Error loading tokyoDetails.html:', error);
-            });
-    }
-    if (event.target && event.target.id === 'btnMachuPicchu') {
-        fetch('content/machuPicchuDetails.html')
-            .then(response => response.text())
-            .then(html => {
-                const content = document.getElementById('content');
-                if (content) {
-                    content.innerHTML = html;
-                    scrollToTop();
-                }
-            })
-            .catch(error => {
-                console.warn('Error loading machuPicchuDetails.html:', error);
-            });
+            }, 100);
+        }
     }
 });
+
+// Load content based on the current hash on page load
+window.addEventListener('DOMContentLoaded', loadContentBasedOnHash);
