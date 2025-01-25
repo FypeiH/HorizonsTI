@@ -2,14 +2,6 @@
 
 Welcome to **Horizons**! This is a personal project where I share my travel experiences, tips, and recommendations from around the world. Whether you're planning a new adventure or looking for inspiration, you'll find it here.
 
-## Features
-
-- **Destination Guides**: Discover amazing travel destinations with detailed guides.
-- **Travel Tips**: Helpful advice on planning your trips, packing, and more.
-- **Photo Gallery**: Stunning travel photos from various locations.
-- **Interactive Maps**: Explore travel spots on interactive maps.
-- **Comment Section**: Engage with readers by sharing your experiences in the comments.
-
 ## Pages
 
 - **Home**: Overview of the latest posts and featured content.
