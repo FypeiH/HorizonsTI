@@ -1,6 +1,6 @@
 # Horizons
 
-Welcome to **Horizons**! This is a personal project where I share my travel experiences, tips, and recommendations from around the world. Whether you're planning a new adventure or looking for inspiration, you'll find it here.
+Welcome to **Horizons**! This academic project, created as part of a college course, highlights a persona's travel experiences, tips, and recommendations from around the world.
 
 ## Pages
 
