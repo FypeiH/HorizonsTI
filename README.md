@@ -35,7 +35,7 @@ git clone https://github.com/FypeiH/HorizonsTI.git
 ```
 2. Navigate to the project folder:
 ```
-cd travel-blog
+cd HorizonsTI
 ```
 3. Open the `index.html` file in your browser to see the site in action.
 
