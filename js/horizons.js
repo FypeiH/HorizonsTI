@@ -18,7 +18,7 @@ function fetchAndInsert(url, targetId) {
 }
 
 function loadContentBasedOnHash() {
-    const hash = window.location.hash;
+    const hash = window.location.hash || '#';
     const content = document.getElementById('content');
 
     const navItems = {
@@ -43,10 +43,11 @@ function loadContentBasedOnHash() {
         '#perfectTrip': { url: 'content/perfectTripDetails.html', nav: 'navBlog' },
         '#europeTrip': { url: 'content/europeTripDetails.html', nav: 'navBlog' },
         '#asiaTrip': { url: 'content/asiaTripDetails.html', nav: 'navBlog' },
-        'default': { url: 'content/home.html', nav: 'navHome' }
+        '#contacto': { url: 'content/contact.html', nav: 'navContacto' },
+        '#': { url: 'content/home.html', nav: 'navHome' }
     };
 
-    const { url, nav } = contentMapping[hash] || contentMapping['default'];
+    const { url, nav } = contentMapping[hash] || contentMapping['#'];
 
     fetch(url)
         .then(response => response.text())
@@ -63,6 +64,9 @@ function loadContentBasedOnHash() {
 // Load shared header and footer
 fetchAndInsert('shared/header.html', 'header');
 fetchAndInsert('shared/footer.html', 'footer');
+setTimeout(() => {
+    loadContentBasedOnHash();
+}, 100);
 
 document.addEventListener('click', function (event) {
     const actions = {
@@ -75,7 +79,8 @@ document.addEventListener('click', function (event) {
         btnMachuPicchu: { hash: '#machuPicchu', scrollTo: null },
         btnPerfectTrip: { hash: '#perfectTrip', scrollTo: null },
         btnEuropeTrip: { hash: '#europeTrip', scrollTo: null },
-        btnAsiaTrip: { hash: '#asiaTrip', scrollTo: null }
+        btnAsiaTrip: { hash: '#asiaTrip', scrollTo: null },
+        navContacto: { hash: '#contacto', scrollTo: null }
     };
 
     const action = actions[event.target.id];

@@ -67,6 +67,10 @@ a {
   height: 100%;
 }
 
+.min-h-screen {
+  min-height: 100vh;
+}
+
 .hover-opacity {
   transition: opacity 0.3s ease-in-out; /* Smooth transition */
 }
@@ -95,7 +99,6 @@ a {
 .navbar-toggler {
   border: none;
 }
-
 
 /* Home */
 .home-hero {
@@ -220,4 +223,17 @@ a {
 }
 .step-section:nth-child(even) {
   background: #f9f9f9;
+}
+
+.contact-card {
+  border-radius: 15px;
+  padding: 20px;
+  background-color: white;
+}
+
+.vr {
+  width: 2px;
+  background-color: #d3d3d3;
+  height: 100%; /* Relative height */
+  min-height: 100px; /* Minimum height to ensure visibility */
 }
