@@ -1,14 +1,17 @@
+/* Font Imports */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@100..900&display=swap');
 
+/* Root Variables */
 :root {
   --primary-color: #d1554a;
   --secondary-color: #F1F1F1;
   --details-color: #34495E;
   --secondary-details-color: #2C3E50;
-  --terciary-details-color: #EAEAEA;
+  --tertiary-details-color: #EAEAEA;
 }
 
+/* Global Styles */
 * {
   margin: 0;
   padding: 0;
@@ -20,8 +23,6 @@ body {
   font-family: 'Inter', sans-serif;
   background-color: var(--secondary-color);
   color: var(--details-color);
-  margin: 0; 
-  padding: 0;
 }
 
 a {
@@ -29,30 +30,9 @@ a {
   cursor: pointer;
 }
 
-/* Shared */
-
+/* Utility Classes */
 .bg-primary {
   background-color: var(--primary-color)!important;
-}
-
-.btn-primary {
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-}
-
-.btn-primary:hover {
-  background-color: var(--primary-color);
-  opacity: 0.8;
-}
-
-.btn-primary:not(:disabled):not(.disabled):active {
-  background-color: var(--primary-color);
-  border: none;
-}
-
-.btn-primary:not(:disabled):not(.disabled):active:focus {
-  box-shadow: none;
 }
 
 .text-details {
@@ -71,127 +51,65 @@ a {
   min-height: 100vh;
 }
 
-.hover-opacity {
-  transition: opacity 0.3s ease-in-out; /* Smooth transition */
+/* Buttons */
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  transition: opacity 0.3s;
 }
 
-.card:hover .hover-opacity {
-  opacity: 1; /* Make the overlay visible */
-  content: '';
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+.btn-primary:hover {
+  background-color: var(--primary-color);
+  opacity: 0.8;
 }
 
-.card-img-overlay {
-  opacity: 0; /* Initially hidden */
-}
-
-/* Navbar */
-.nav-navbar-brand {
-  font-family: 'Bebas Neue', cursive;
-}
-
-.navbar-toggler {
+.btn-primary:not(:disabled):not(.disabled):active {
+  background-color: var(--primary-color);
   border: none;
 }
 
-/* Home */
+.btn-primary:active,
+.btn-primary:focus {
+  background-color: var(--primary-color);
+  opacity: 0.8;
+  box-shadow: none;
+}
+
+/* Shared Hero Styles */
+.hero-section {
+  background-attachment: fixed;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.hero-section > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Hero Variants */
 .home-hero {
   background: url('../img/homehero.jpg') center/cover no-repeat;
-  background-attachment: fixed;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  position: relative;
 }
 
-.home-hero::before {
-  content: ''; 
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5); 
-  z-index: 1;
-}
-
-.home-hero > * {
-  position: relative;
-  z-index: 2;
-}
-
-/* Destinos */
-.destinos-hero {
-  background-attachment: fixed;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  position: relative;
-}
-
-.destinos-hero.paris {
-  background: url('../img/parishero.jpg') center/cover no-repeat;
-}
-
-.destinos-hero.tokyo {
-  background: url('../img/tokyohero.jpg') center/cover no-repeat;
-}
-
-.destinos-hero.machu {
-  background: url('../img/machuhero.jpg') center/cover no-repeat;
-}
-
-.destinos-hero::before {
-  content: ''; 
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5); 
-  z-index: 1;
-}
-
-.destinos-hero > * {
-  position: relative;
-  z-index: 2;
-}
-
-/* Articles */
-.article-hero {
-  background-attachment: fixed;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  position: relative;
-}
-
-.article-hero::before {
-  content: ''; 
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5); 
-  z-index: 1;
-}
-
-.article-hero > * {
-  position: relative;
-  z-index: 2;
+.weather-hero {
+  background: url('../img/weather.jpg') center/cover no-repeat;
 }
 
 .article-hero.perfect-trip {
@@ -206,25 +124,80 @@ a {
   background: url('../img/asiaadventure.jpg') center/cover no-repeat;
 }
 
+.destinos-hero.paris {
+  background: url('../img/parishero.jpg') center/cover no-repeat;
+}
+
+.destinos-hero.tokyo {
+  background: url('../img/tokyohero.jpg') center/cover no-repeat;
+}
+
+.destinos-hero.machu {
+  background: url('../img/machuhero.jpg') center/cover no-repeat;
+}
+
+/* Cards */
+.card {
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.card:hover .hover-opacity {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.card-img-overlay {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Weather Card */
+.weather-card {
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.weather-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.weather-card img {
+  width: 80px;
+  margin: 10px 0;
+}
+
+.weather-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+.weather-card p {
+  margin: 5px 0;
+  font-size: 1rem;
+}
+
+/* Sections */
+.step-section {
+  padding: 50px 0;
+}
+
+.step-section:nth-child(even) {
+  background: #f9f9f9;
+}
 
 .section-img {
   background-size: cover;
   background-position: center;
   min-height: 300px;
 }
-.text-overlay {
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
-  padding: 20px;
-  border-radius: 5px;
-}
-.step-section {
-  padding: 50px 0;
-}
-.step-section:nth-child(even) {
-  background: #f9f9f9;
-}
 
+/* Contact Card */
 .contact-card {
   border-radius: 15px;
   padding: 20px;
@@ -234,6 +207,23 @@ a {
 .vr {
   width: 2px;
   background-color: #d3d3d3;
-  height: 100%; /* Relative height */
-  min-height: 100px; /* Minimum height to ensure visibility */
+  height: 100%;
+  min-height: 100px;
+}
+
+/* Text Overlay */
+.text-overlay {
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+/* Navbar */
+.nav-navbar-brand {
+  font-family: 'Bebas Neue', cursive;
+}
+
+.navbar-toggler {
+  border: none;
 }
