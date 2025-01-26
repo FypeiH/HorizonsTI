@@ -7,7 +7,7 @@ Welcome to **Horizons**! This academic project, created as part of a college cou
 - **Home**: Overview of the latest posts and featured content.
 - **Destinations**: Explore different travel destinations worldwide.
 - **Travel Tips**: Helpful resources and advice for planning your trips.
-- **Blog**: Read personal travel stories and experiences.
+- **Weather Forecast**: Explore the latest weather updates for popular travel destinations worldwide, helping you plan your journey with ease.
 - **Contact**: Get in touch for collaborations, inquiries, or just to say hello!
 
 ## Technologies Used
